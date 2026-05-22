@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Progression Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Task Progression Tracker</h1>
+            <p>Create flows and track tasks through pending, in-progress, and completed</p>
+        </header>
+
+        <div class="top-bar">
+            <div class="legend">
+                <div class="legend-item"><span class="dot pending"></span> Pending</div>
+                <div class="legend-item"><span class="dot in-progress"></span> In Progress</div>
+                <div class="legend-item"><span class="dot completed"></span> Completed</div>
+            </div>
+            <div class="top-bar-actions">
+                <button id="addFlowBtn" type="button">+ New Flow</button>
+                <button id="undoBtn" type="button" title="Undo (Ctrl+Z)" disabled>↩ Undo</button>
+                <button id="redoBtn" type="button" title="Redo (Ctrl+Y)" disabled>↪ Redo</button>
+                <button id="historyBtn" type="button" title="View history tree">🕐 History</button>
+                <button id="exportBtn" type="button" title="Export flows to JSON file">⬇ Export</button>
+                <button id="importBtn" type="button" title="Import flows from JSON file">⬆ Import</button>
+                <input type="file" id="importFile" accept=".json" style="display:none">
+            </div>
+        </div>
+
+        <div id="flowsContainer" class="flows-container"></div>
+
+        <div id="hiddenFlowsSection" class="hidden-flows-section"></div>
+
+        <div class="empty-state" id="emptyState">
+            <p>No flows yet. Click <strong>+ New Flow</strong> to get started!</p>
+        </div>
+    </div>
+
+    <div id="historyPanel" class="history-panel hidden">
+        <div class="history-panel-header">
+            <span>History Tree</span>
+            <button id="historyPanelClose" type="button">&times;</button>
+        </div>
+        <div id="historyPanelBody" class="history-panel-body"></div>
+    </div>
+
+    <div id="emojiPicker" class="emoji-picker hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
